@@ -1,0 +1,102 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Platform_Generator : MonoBehaviour {
+
+    public GameObject platformLeft;
+    public GameObject platformMiddle;
+    public GameObject platformRight;
+
+    public Transform generationPoint;
+    Transform thisTransform;
+
+    public Transform lastPlatform;
+    float lastPlatformX;
+    float lastPlatformY;
+
+    float platformWidth;
+    float platformHeight;
+
+    float fullPlatformWidth;
+
+    public float sizeBetweenMinX;
+    public float sizeBetweenMaxX;
+    public float sizeBetweenMinY;
+    public float sizeBetweenMaxY;
+
+    void Start () {
+        lastPlatformX = lastPlatform.position.x;
+        lastPlatformY = lastPlatform.position.y;
+
+        platformWidth = platformMiddle.GetComponent<BoxCollider2D>().size.x;
+        platformHeight = platformMiddle.GetComponent<BoxCollider2D>().size.y;
+    }
+
+	void Update () {
+		
+        if(transform.position.x < generationPoint.position.x) {
+
+            int platformSize = Random.Range(1, 7);
+            float posX = pickX();
+            float posY = pickY();
+
+            createPlatform(platformSize, posX, posY);
+
+            transform.position = new Vector3(lastPlatformX, lastPlatformY, 0);
+
+        }
+
+	}
+
+    void createPlatform(int s, float x, float y) {
+
+        float currentX = x;
+
+        //make leftPlatform
+        Instantiate(platformLeft, new Vector3(currentX, y, 0), transform.rotation);
+        currentX += platformWidth;
+        //make middlePlatform or middlePlatforms
+        for (int i = 0; i < s; i++) {
+            Instantiate(platformMiddle, new Vector3(currentX, y, 0), transform.rotation);
+            currentX += platformWidth;
+        }
+
+        //make rightPlatform
+        Instantiate(platformRight, new Vector3(currentX, y, 0), transform.rotation);
+
+        lastPlatformX = currentX;
+        lastPlatformY = y;
+
+
+    }
+
+    float pickX() {
+        return Random.Range(lastPlatformX + sizeBetweenMinX, lastPlatformX + sizeBetweenMaxX);
+    }
+
+    float pickY() {
+        float y;
+
+        if (lastPlatformY > -0.885f && lastPlatformY < 4.5f) {
+            y = Random.Range(sizeBetweenMinX, sizeBetweenMaxX);
+            int rand = Random.Range(0, 1);
+            if (rand == 0) { //down
+                y = lastPlatformY - y;
+            }
+            if (rand == 1) { //up
+                y = lastPlatformY + y;
+            }
+
+            return y;
+        }
+        else if (lastPlatformY > 4.5f) {
+            return Random.Range(-0.885f, 3.5f);
+        }
+        else if (lastPlatformY < -0.885f) {
+            return Random.Range(lastPlatformY + sizeBetweenMinY, lastPlatformY + sizeBetweenMaxY);
+        }
+
+        else return -0.885f;
+    }
+}

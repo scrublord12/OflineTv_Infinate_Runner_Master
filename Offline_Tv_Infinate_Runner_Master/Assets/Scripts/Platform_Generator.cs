@@ -7,6 +7,7 @@ public class Platform_Generator : MonoBehaviour {
     public GameObject platformLeft;
     public GameObject platformMiddle;
     public GameObject platformRight;
+    public GameObject microphone;
 
     public Transform generationPoint;
     Transform thisTransform;
@@ -14,6 +15,9 @@ public class Platform_Generator : MonoBehaviour {
     public Transform lastPlatform;
     float lastPlatformX;
     float lastPlatformY;
+
+    public float micDifferenceX;
+    public float micDifferenceY;
 
     float platformWidth;
     float platformHeight;
@@ -37,7 +41,7 @@ public class Platform_Generator : MonoBehaviour {
 		
         if(transform.position.x < generationPoint.position.x) {
 
-            int platformSize = Random.Range(1, 7);
+            int platformSize = Random.Range(1, 9);
             float posX = pickX();
             float posY = pickY();
 
@@ -50,15 +54,27 @@ public class Platform_Generator : MonoBehaviour {
 	}
 
     void createPlatform(int s, float x, float y) {
-
+        bool createMic = true;
         float currentX = x;
 
         //make leftPlatform
         Instantiate(platformLeft, new Vector3(currentX, y, 0), transform.rotation);
         currentX += platformWidth;
+
+        
+
         //make middlePlatform or middlePlatforms
         for (int i = 0; i < s; i++) {
+            int ramdMic = Random.Range(0, 3);
             Instantiate(platformMiddle, new Vector3(currentX, y, 0), transform.rotation);
+            if(ramdMic == 1 && createMic && i != 0 && i != s-1) {
+                Instantiate(microphone, new Vector3(currentX - micDifferenceX, y + micDifferenceY, 0), transform.rotation);
+                createMic = false;
+            }
+            if(i == 4) {
+                createMic = true;
+            }
+
             currentX += platformWidth;
         }
 

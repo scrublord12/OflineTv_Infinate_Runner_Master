@@ -26,6 +26,11 @@ public class Player_Controller : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    public Transform groundCheck;
+    public float groundCheckRadius;
+
+    public GameManager gm;
+
     void Start() {
 
         rb = GetComponent<Rigidbody2D>();
@@ -40,12 +45,16 @@ public class Player_Controller : MonoBehaviour {
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
-        isGrounded = Physics2D.IsTouchingLayers(myCollider, groundLayer);
+        //isGrounded = Physics2D.IsTouchingLayers(myCollider, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if(transform.position.x > speed_Milestone_Count) {
             speed_Milestone_Count += speed_Increase_Milestone;
 
+            speed_Increase_Milestone = speed_Increase_Milestone * speed_Multiplier;
             speed = speed * speed_Multiplier;
+
+           // speed_Milestone_Count = speed_Increase_Milestone;
         }
 
         if (Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) {
@@ -74,5 +83,8 @@ public class Player_Controller : MonoBehaviour {
         myAnim.SetFloat("Speed", rb.velocity.x);
         myAnim.SetFloat("Vertical_Speed", rb.velocity.y);
 
+        if(transform.position.y <= -20f) {
+            gm.restartGame();
+        }
     }
 }

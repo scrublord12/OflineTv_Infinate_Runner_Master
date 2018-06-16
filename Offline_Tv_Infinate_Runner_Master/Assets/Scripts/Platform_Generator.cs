@@ -13,8 +13,8 @@ public class Platform_Generator : MonoBehaviour {
     Transform thisTransform;
 
     public Transform lastPlatform;
-    float lastPlatformX;
-    float lastPlatformY;
+    public float lastPlatformX;
+    public float lastPlatformY;
 
     public float micDifferenceX;
     public float micDifferenceY;
@@ -38,9 +38,8 @@ public class Platform_Generator : MonoBehaviour {
     }
 
 	void Update () {
-		
-        if(transform.position.x < generationPoint.position.x) {
 
+        if (transform.position.x < generationPoint.position.x) {
             int platformSize = Random.Range(1, 9);
             float posX = pickX();
             float posY = pickY();
@@ -51,7 +50,7 @@ public class Platform_Generator : MonoBehaviour {
 
         }
 
-	}
+    }
 
     void createPlatform(int s, float x, float y) {
         bool createMic = true;
@@ -94,7 +93,7 @@ public class Platform_Generator : MonoBehaviour {
     float pickY() {
         float y;
 
-        if (lastPlatformY > -0.885f && lastPlatformY < 4.5f) {
+        if (lastPlatformY > 0.5f && lastPlatformY < 4.5f) {
             y = Random.Range(sizeBetweenMinX, sizeBetweenMaxX);
             int rand = Random.Range(0, 1);
             if (rand == 0) { //down
@@ -107,12 +106,12 @@ public class Platform_Generator : MonoBehaviour {
             return y;
         }
         else if (lastPlatformY > 4.5f) {
-            return Random.Range(-0.885f, 3.5f);
+            return Random.Range(0.5f, 3.5f);
         }
-        else if (lastPlatformY < -0.885f) {
+        else if (lastPlatformY < 0.5f) {
             return Random.Range(lastPlatformY + sizeBetweenMinY, lastPlatformY + sizeBetweenMaxY);
         }
 
-        else return -0.885f;
+        else return 0.5f;
     }
 }

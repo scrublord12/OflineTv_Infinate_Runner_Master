@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraFollow2DPlatformer : MonoBehaviour {
 
-    public Transform target; //camera is following this
-    public float smoothing; //dampening efffect on the camera
+    public Player_Controller player;
+    Vector3 lastPlayerPositionl;
+    float distanceToMove;
 
     Vector3 offset;
 
@@ -13,30 +14,20 @@ public class CameraFollow2DPlatformer : MonoBehaviour {
     float lowX;
 
 	void Start () {
-
-        offset = transform.position - target.position;
-        lowY = transform.position.y;
-        lowX = transform.position.x;
+        player = FindObjectOfType<Player_Controller>();
+        lastPlayerPositionl = player.transform.position;
 
 	}
 
-    private void FixedUpdate() {
-        Vector3 targetCamPos = target.position + offset;
+    private void Update() {
+        distanceToMove = player.transform.position.x - lastPlayerPositionl.x;
 
-        transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
-
-        if(transform.position.y < lowY) {
-            transform.position = new Vector3(transform.position.x, lowY, transform.position.z);
-        }
-
-        if (transform.position.x < lowX) {
-            transform.position = new Vector3(lowX, transform.position.y, transform.position.z);
-        }
-
-        if (transform.position.y > lowY) {
-            transform.position = new Vector3(transform.position.x, lowY, transform.position.z);
-        }
+        transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
+        lastPlayerPositionl = player.transform.position;
     }
 
 
+
+
 }
+        

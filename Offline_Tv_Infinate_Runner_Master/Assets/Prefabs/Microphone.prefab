@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61732126879183676}
   - component: {fileID: 114070736455564574}
   - component: {fileID: 95753026428886730}
+  - component: {fileID: 114690522062162472}
   m_Layer: 0
   m_Name: Microphone
   m_TagString: Untagged
@@ -97,6 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65cbee92d2a8c748b4fe39af283b2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114690522062162472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383215688864572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d6fba7d836d074cb109c7daa7cc7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformDestructionPoint: {fileID: 0}
+  platformGenerationPoint: {fileID: 0}
 --- !u!212 &212620376530534756
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -12,10 +12,18 @@ public class GameManager : MonoBehaviour {
 
     PlatformDeletionScript[] platformList;
 
+    float initialSpeed;
+    float initialMilestone;
+
+    public ScoreManager score;
+
 	void Start () {
 
         platformStartPoint = platformGenerator.position;
         playerStartPoint = player.transform.position;
+
+        initialSpeed = player.speed;
+        initialMilestone= player.speed_Increase_Milestone;
 
 	}
 	
@@ -36,11 +44,17 @@ public class GameManager : MonoBehaviour {
 
             Destroy(platformList[i].gameObject);
         }
-        yield return new WaitForSeconds(1f);
+        score.scoreIncreasing = false;
+
+        yield return new WaitForSeconds(3f);
         player.transform.position = playerStartPoint;
         platformGenerator.GetComponent<Platform_Generator>().lastPlatformX = platformStartPoint.x;
         platformGenerator.GetComponent<Platform_Generator>().lastPlatformY = platformStartPoint.y;
         platformGenerator.position = platformStartPoint;
+        player.speed = initialSpeed;
+        player.speed_Increase_Milestone = initialMilestone;
+        score.scoreCount = 0;
+        player.micTouched = false;
 
 
         player.gameObject.SetActive(true);

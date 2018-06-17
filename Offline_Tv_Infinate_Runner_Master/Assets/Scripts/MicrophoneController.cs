@@ -19,6 +19,7 @@ public class MicrophoneController : MonoBehaviour {
         lilly = GameObject.Find("Player");
         player = lilly.GetComponent<CircleCollider2D>();
 
+
     }
 
     void Update() {
@@ -27,7 +28,12 @@ public class MicrophoneController : MonoBehaviour {
 
             touched = true;
 
+            lilly.GetComponent<Player_Controller>().micTouched = true;
+
             myAnim.SetBool("Touched", touched);
+
+  
+
         }
 
 

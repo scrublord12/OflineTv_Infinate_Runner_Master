@@ -31,6 +31,10 @@ public class Player_Controller : MonoBehaviour {
 
     public GameManager gm;
 
+    public bool micTouched;
+
+    bool stoppedJumping;
+
     void Start() {
 
         rb = GetComponent<Rigidbody2D>();
@@ -38,6 +42,8 @@ public class Player_Controller : MonoBehaviour {
         myAnim = GetComponent<Animator>();
 
         jump_Time_Counter = jump_Time;
+
+        stoppedJumping = true;
 
     }
 
@@ -60,19 +66,22 @@ public class Player_Controller : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) {
 
             rb.velocity = new Vector2(rb.velocity.x, jump_Force);
+            stoppedJumping = false;
         }
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) {
+        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) {
 
             if (jump_Time_Counter > 0) {
                 rb.velocity = new Vector2(rb.velocity.x, jump_Force);
                 jump_Time_Counter -= Time.deltaTime;
+ 
             }
 
         }
 
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {
             jump_Time_Counter = 0;
+            stoppedJumping = true;
         }
 
         if (isGrounded) {
@@ -83,7 +92,7 @@ public class Player_Controller : MonoBehaviour {
         myAnim.SetFloat("Speed", rb.velocity.x);
         myAnim.SetFloat("Vertical_Speed", rb.velocity.y);
 
-        if(transform.position.y <= -20f) {
+        if(transform.position.y <= -20f || micTouched) {
             gm.restartGame();
         }
     }

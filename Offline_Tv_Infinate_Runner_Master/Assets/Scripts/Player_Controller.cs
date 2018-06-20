@@ -18,6 +18,8 @@ public class Player_Controller : MonoBehaviour {
 
     public bool isGrounded;
 
+    public bool notOnMenu;
+
     public LayerMask groundLayer;
 
     Animator myAnim;
@@ -52,7 +54,7 @@ public class Player_Controller : MonoBehaviour {
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
         //isGrounded = Physics2D.IsTouchingLayers(myCollider, groundLayer);
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) && notOnMenu;
 
         if(transform.position.x > speed_Milestone_Count) {
             speed_Milestone_Count += speed_Increase_Milestone;

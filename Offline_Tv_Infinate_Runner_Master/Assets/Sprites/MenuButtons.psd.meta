@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: d7cad1b09adbf244db9808c67212e094
+guid: eb62aa04c4a4e994b8bde684dc4f0b38
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Lilly_Clouds_0
-    21300002: Lilly_Clouds_1
-    21300004: Lilly_Clouds_2
-    21300006: Lilly_Clouds_3
-    21300008: Lilly_Clouds_4
-    21300010: Lilly_Clouds_5
+    21300000: MenuButtons_0
+    21300002: MenuButtons_1
+    21300004: MenuButtons_2
+    21300006: MenuButtons_3
+    21300008: MenuButtons_4
+    21300010: MenuButtons_5
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -132,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lilly_Clouds_0
+      name: MenuButtons_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 32
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,19 +146,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74f69996d3657254cac58b86cf391676
+      spriteID: b81b3736554a47249a62db2290403c06
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lilly_Clouds_1
+      name: MenuButtons_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 32
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,19 +166,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 319813f8368399c4b9342388275b63a8
+      spriteID: 5a0bd80aba366db4b8c87a4022485b01
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lilly_Clouds_2
+      name: MenuButtons_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 128
+        y: 32
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,39 +186,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47c44124aefd294488aecb8c798f1dcf
+      spriteID: 70d99a93cabaf6446b6860c64f487e0e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lilly_Clouds_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b75b848a5ccecb4c98a2616ebbdfb52
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lilly_Clouds_4
+      name: MenuButtons_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,19 +206,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59caced0b96516e49a8722f4cc823446
+      spriteID: 5096a100c92777c4c90845b76422c364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lilly_Clouds_5
+      name: MenuButtons_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,7 +226,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d2d418ce9bebc94285e6fd8727d2919
+      spriteID: 5e483033986323b4da5d0ef95ca399c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuButtons_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb356f678aa61641b2f718875fd5014
       vertices: []
       indices: 
       edges: []
@@ -254,7 +254,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 795691c0ecf04884dad53674e8620c51
+    spriteID: 0720952aa7f4dba4997715ab40b0a012
     vertices: []
     indices: 
     edges: []

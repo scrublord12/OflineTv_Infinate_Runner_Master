@@ -37,6 +37,8 @@ public class Player_Controller : MonoBehaviour {
 
     bool stoppedJumping;
 
+    public bool alreadyDead;
+
     void Start() {
 
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +49,8 @@ public class Player_Controller : MonoBehaviour {
 
         stoppedJumping = true;
 
+        alreadyDead = false;
+
     }
 
     void Update() {
@@ -54,7 +58,7 @@ public class Player_Controller : MonoBehaviour {
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
         //isGrounded = Physics2D.IsTouchingLayers(myCollider, groundLayer);
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) && notOnMenu;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         if(transform.position.x > speed_Milestone_Count) {
             speed_Milestone_Count += speed_Increase_Milestone;
@@ -65,13 +69,13 @@ public class Player_Controller : MonoBehaviour {
            // speed_Milestone_Count = speed_Increase_Milestone;
         }
 
-        if (Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+        if ((Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) && speed > 0) {
 
             rb.velocity = new Vector2(rb.velocity.x, jump_Force);
             stoppedJumping = false;
         }
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) {
+        if (((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) && speed > 0) {
 
             if (jump_Time_Counter > 0) {
                 rb.velocity = new Vector2(rb.velocity.x, jump_Force);
@@ -81,7 +85,7 @@ public class Player_Controller : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && speed > 0) {
             jump_Time_Counter = 0;
             stoppedJumping = true;
         }
@@ -94,8 +98,9 @@ public class Player_Controller : MonoBehaviour {
         myAnim.SetFloat("Speed", rb.velocity.x);
         myAnim.SetFloat("Vertical_Speed", rb.velocity.y);
 
-        if(transform.position.y <= -20f || micTouched) {
-            gm.restartGame();
+        if((transform.position.y <= -20f || micTouched) && !alreadyDead) {
+            gm.Died();
+            alreadyDead = true;
         }
     }
 }

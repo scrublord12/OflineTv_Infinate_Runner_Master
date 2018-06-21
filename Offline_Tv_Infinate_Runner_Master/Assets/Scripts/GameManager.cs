@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
 
     public Transform platformGenerator;
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour {
     float initialMilestone;
 
     public ScoreManager score;
+
+    public GameObject DeathMenu;
 
 	void Start () {
 
@@ -36,17 +40,18 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator RestartGameCo(){
-
+        DeathMenu.GetComponent<Animator>().SetBool("Died", false);
         player.gameObject.SetActive(false);
+
         platformList = FindObjectsOfType<PlatformDeletionScript>();
 
         for(int i = 0; i < platformList.Length; i++) {
 
             Destroy(platformList[i].gameObject);
         }
-        score.scoreIncreasing = false;
 
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(0f);
         player.transform.position = playerStartPoint;
         platformGenerator.GetComponent<Platform_Generator>().lastPlatformX = platformStartPoint.x;
         platformGenerator.GetComponent<Platform_Generator>().lastPlatformY = platformStartPoint.y;
@@ -55,9 +60,30 @@ public class GameManager : MonoBehaviour {
         player.speed_Increase_Milestone = initialMilestone;
         score.scoreCount = 0;
         player.micTouched = false;
+        DeathMenu.GetComponent<Animator>().SetBool("Died", false);
 
+        player.alreadyDead = false;
 
         player.gameObject.SetActive(true);
+
+    }
+
+    public void Died() {
+
+        score.scoreIncreasing = false;
+        DeathMenu.GetComponent<Animator>().SetBool("Died", true);
+        if (player.isGrounded) {
+
+            //run lilly sad animation
+            player.speed = 0;
+
+        }
+
+
+    }
+
+    public void Menu() {
+        SceneManager.LoadScene("Main_Menu");
 
     }
 }

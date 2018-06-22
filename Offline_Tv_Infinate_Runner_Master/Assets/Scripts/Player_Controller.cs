@@ -102,5 +102,10 @@ public class Player_Controller : MonoBehaviour {
             gm.Died();
             alreadyDead = true;
         }
+
+        if (micTouched) {
+
+            speed = 0;
+        }
     }
 }

@@ -8,10 +8,26 @@ public class MainMenu : MonoBehaviour {
 
     public string playGameLevel;
 
+    public Animator transition;
+
 
     public void playGame() {
 
+        StartCoroutine("play");
+
+    }
+
+    private void Awake() {
+
+        transition.SetTrigger("Down");
+    }
+
+    IEnumerator play() {
+
+        transition.SetTrigger("Full");
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(playGameLevel);
+
 
     }
 

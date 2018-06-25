@@ -23,8 +23,11 @@ public class GameManager : MonoBehaviour {
 
     public Animator transition;
 
+    public GameObject[] BackgroundSounds;
+
     private void Awake() {
         transition.SetTrigger("Down");
+        BackgroundSounds[Random.Range(0, BackgroundSounds.Length)].GetComponent<AudioSource>().Play();
     }
 
     void Start () {
@@ -39,6 +42,17 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
+
+        if (player.alreadyDead) {
+            for (int i = 0; i < BackgroundSounds.Length; i++) {
+
+                if (BackgroundSounds[i].GetComponent<AudioSource>().isPlaying) {
+                    BackgroundSounds[i].GetComponent<AudioSource>().Stop();
+                }
+            }
+        }
+
+
     }
 
     public void restartGame() {
@@ -47,6 +61,12 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator RestartGameCo(){
         transition.SetTrigger("Full");
+        for(int i = 0; i < BackgroundSounds.Length; i++) {
+
+            if (BackgroundSounds[i].GetComponent<AudioSource>().isPlaying) {
+                BackgroundSounds[i].GetComponent<AudioSource>().Stop();
+            }
+        }
         yield return new WaitForSeconds(0.5f);
         DeathMenu.GetComponent<Animator>().SetBool("Died", false);
         player.gameObject.SetActive(false);
@@ -70,6 +90,7 @@ public class GameManager : MonoBehaviour {
         DeathMenu.GetComponent<Animator>().SetBool("Died", false);
 
         player.alreadyDead = false;
+        BackgroundSounds[Random.Range(0, BackgroundSounds.Length)].GetComponent<AudioSource>().Play();
 
         player.gameObject.SetActive(true);
 

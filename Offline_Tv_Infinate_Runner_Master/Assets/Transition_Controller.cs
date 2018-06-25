@@ -10,7 +10,9 @@ public class Transition_Controller : MonoBehaviour {
 	}
 
     private void Awake() {
-        DontDestroyOnLoad(this.gameObject);
+        
+        
+
     }
 
     // Update is called once per frame

@@ -39,6 +39,14 @@ public class Player_Controller : MonoBehaviour {
 
     public bool alreadyDead;
 
+    public GameObject[] MicHitSounds;
+
+    public GameObject[] FallSounds;
+
+    public GameObject[] JumpSounds;
+
+    bool alreadyDeadMic;
+
     void Start() {
 
         rb = GetComponent<Rigidbody2D>();
@@ -69,13 +77,15 @@ public class Player_Controller : MonoBehaviour {
            // speed_Milestone_Count = speed_Increase_Milestone;
         }
 
-        if ((Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) && speed > 0) {
+        if ((Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded || Input.touchCount == 1) && speed > 0) {
 
             rb.velocity = new Vector2(rb.velocity.x, jump_Force);
+            JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
+
             stoppedJumping = false;
         }
 
-        if (((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) && speed > 0) {
+        if (((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0) || Input.GetTouch(0).phase != TouchPhase.Moved) && !stoppedJumping) && speed > 0) {
 
             if (jump_Time_Counter > 0) {
                 rb.velocity = new Vector2(rb.velocity.x, jump_Force);
@@ -85,7 +95,7 @@ public class Player_Controller : MonoBehaviour {
 
         }
 
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && speed > 0) {
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0) || Input.GetTouch(0).phase == TouchPhase.Moved) && speed > 0) {
             jump_Time_Counter = 0;
             stoppedJumping = true;
         }
@@ -98,14 +108,21 @@ public class Player_Controller : MonoBehaviour {
         myAnim.SetFloat("Speed", rb.velocity.x);
         myAnim.SetFloat("Vertical_Speed", rb.velocity.y);
 
-        if((transform.position.y <= -20f || micTouched) && !alreadyDead) {
+        if((transform.position.y <= -5f || micTouched) && !alreadyDead) {
             gm.Died();
             alreadyDead = true;
         }
 
-        if (micTouched) {
-
+        if (micTouched && !alreadyDeadMic) {
+            MicHitSounds[Random.Range(0, MicHitSounds.Length)].GetComponent<AudioSource>().Play();
             speed = 0;
         }
+
+        if (transform.position.y <= -5f && !alreadyDeadMic) {
+            FallSounds[Random.Range(0, FallSounds.Length)].GetComponent<AudioSource>().Play();
+            
+        }
+
+        alreadyDeadMic = alreadyDead;
     }
 }

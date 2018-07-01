@@ -59,6 +59,8 @@ public class Player_Controller : MonoBehaviour {
 
         alreadyDead = false;
 
+        speed = 14;
+
     }
 
     void Update() {
@@ -77,7 +79,7 @@ public class Player_Controller : MonoBehaviour {
            // speed_Milestone_Count = speed_Increase_Milestone;
         }
 
-        if ((Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded || Input.touchCount == 1) && speed > 0) {
+        if ((Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) && speed > 0) {
 
             rb.velocity = new Vector2(rb.velocity.x, jump_Force);
             JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
@@ -85,7 +87,7 @@ public class Player_Controller : MonoBehaviour {
             stoppedJumping = false;
         }
 
-        if (((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0) || Input.GetTouch(0).phase != TouchPhase.Moved) && !stoppedJumping) && speed > 0) {
+        if (((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) && speed > 0) {
 
             if (jump_Time_Counter > 0) {
                 rb.velocity = new Vector2(rb.velocity.x, jump_Force);
@@ -95,7 +97,7 @@ public class Player_Controller : MonoBehaviour {
 
         }
 
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0) || Input.GetTouch(0).phase == TouchPhase.Moved) && speed > 0) {
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && speed > 0) {
             jump_Time_Counter = 0;
             stoppedJumping = true;
         }
@@ -126,3 +128,5 @@ public class Player_Controller : MonoBehaviour {
         alreadyDeadMic = alreadyDead;
     }
 }
+
+

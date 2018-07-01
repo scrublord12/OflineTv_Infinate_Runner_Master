@@ -3083,7 +3083,6 @@ MonoBehaviour:
   - {fileID: 384808073}
   FallSounds:
   - {fileID: 976420990}
-  - {fileID: 866254750}
   JumpSounds:
   - {fileID: 573778217}
 --- !u!95 &1832572772

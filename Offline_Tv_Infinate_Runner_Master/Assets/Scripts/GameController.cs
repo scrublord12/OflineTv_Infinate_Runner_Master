@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-    public bool music;
 
 	// Use this for initialization
 	void Start () {
@@ -22,13 +21,8 @@ public class GameController : MonoBehaviour {
 
     private void Awake() {
         
-            DontDestroyOnLoad(this.gameObject);
+
         
     }
 
-    void MusicController() {
-
-        music = !music;
-
-    }
 }

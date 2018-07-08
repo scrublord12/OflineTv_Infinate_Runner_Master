@@ -59,7 +59,7 @@ public class Player_Controller : MonoBehaviour {
 
         alreadyDead = false;
 
-        speed = 14;
+  
 
     }
 

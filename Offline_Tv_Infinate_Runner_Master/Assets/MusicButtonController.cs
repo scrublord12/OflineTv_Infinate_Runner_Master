@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class MusicButtonController : MonoBehaviour {
 
+
+    //the current music button in the scene this object is in
     public Button musicButton;
 
+    //use this sprite when the music is playing
     public Sprite musicOn;
 
+    //use this sprite when music is not playing
     public Sprite musicOff;
 
+    //all the audio files tagged with music
     GameObject[] audio;
 
 

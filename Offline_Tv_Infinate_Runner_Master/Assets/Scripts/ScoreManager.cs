@@ -17,6 +17,8 @@ public class ScoreManager : MonoBehaviour {
 
     Vector3 playerStartPoint;
 
+    
+
 	void Start () {
 
         playerStartPoint = player.position;

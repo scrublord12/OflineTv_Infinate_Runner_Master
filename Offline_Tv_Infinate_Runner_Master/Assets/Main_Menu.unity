@@ -2940,7 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump_Force: 13
-  speed: 4
+  speed: 3
   speed_Multiplier: 1.05
   speed_Increase_Milestone: 50
   jump_Time: 0

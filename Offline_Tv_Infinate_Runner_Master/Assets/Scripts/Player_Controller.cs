@@ -65,6 +65,10 @@ public class Player_Controller : MonoBehaviour {
 
     void Update() {
 
+        if (!notOnMenu) {
+            speed_Multiplier = 1;
+        }
+
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
         //isGrounded = Physics2D.IsTouchingLayers(myCollider, groundLayer);

@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    public string playGameLevel;
+    public string lilyLevel;
+
+    public string fedLevel;
 
     public Animator transition;
+
+    public Animator move;
+
 
 
     public void playGame() {
@@ -24,16 +29,53 @@ public class MainMenu : MonoBehaviour {
 
     IEnumerator play() {
 
-        transition.SetTrigger("Full");
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(playGameLevel);
+        move.SetTrigger("move");
+        yield return new WaitForSeconds(0f);
+        //SceneManager.LoadScene(playGameLevel);
 
+
+    }
+
+    public void back() {
+
+        move.SetTrigger("moveBack");
 
     }
 
     public void quitGame() {
         Application.Quit();
     }
+
+    public void fedPlay() {
+
+        StartCoroutine("fed");
+
+    }
+
+    public void lilyPlay() {
+
+        StartCoroutine("lily");
+
+    }
+
+    IEnumerator fed() {
+
+        transition.SetTrigger("Up");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(fedLevel);
+
+
+    }
+
+    IEnumerator lily() {
+
+        transition.SetTrigger("Up");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(lilyLevel);
+
+
+    }
+
 
 
 }

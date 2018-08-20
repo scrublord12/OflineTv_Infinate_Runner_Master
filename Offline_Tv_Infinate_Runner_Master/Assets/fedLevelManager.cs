@@ -28,6 +28,10 @@ public class fedLevelManager : MonoBehaviour {
 
     public GameObject initialPlatform;
 
+    float initialMilestoneCount;
+
+    float initialSpeedMultipler;
+
     private void Awake() {
 
         transition.SetTrigger("Down");
@@ -44,11 +48,15 @@ public class fedLevelManager : MonoBehaviour {
         initialCameraPosition = camera.transform.position;
 
         platformStartPoint = platformGenerationPoint.transform.position;
-        
+
+        initialSpeedMultipler = camera.GetComponent<CameraFollowFedLevel>().speedMultiplier;
+
+        initialMilestoneCount = camera.GetComponent<CameraFollowFedLevel>().milestoneCount;
 
 
 
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -91,6 +99,10 @@ public class fedLevelManager : MonoBehaviour {
         platformGenerator.GetComponent<Fed_Platform_Generator>().lastPlatformY = initialPlatform.transform.position.y;
 
         camera.GetComponent<CameraFollowFedLevel>().camMove = false;
+
+        camera.GetComponent<CameraFollowFedLevel>().milestoneCount = initialMilestoneCount;
+
+        camera.GetComponent<CameraFollowFedLevel>().speedMultiplier = initialSpeedMultipler;
 
         score.scoreCount = 0;
 

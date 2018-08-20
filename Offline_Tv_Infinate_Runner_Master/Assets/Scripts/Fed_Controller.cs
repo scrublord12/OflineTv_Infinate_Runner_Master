@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fed_Controller : MonoBehaviour {
 
@@ -46,6 +47,17 @@ public class Fed_Controller : MonoBehaviour {
 
     public bool inMenu;
 
+    public Button jumpButton;
+    
+
+    bool jump, right, left;
+
+    public Button rightButton;
+
+    public Button leftButton;
+
+    bool buttonsClicked;
+
 
     // Use this for initialization
     void Start () {
@@ -63,8 +75,38 @@ public class Fed_Controller : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
-	void Update () {
+
+
+    public void turnRight() {
+
+        right = true;
+
+        //buttonsClicked = true;
+
+    }
+
+    public void turnLeft() {
+
+        left = true;
+
+        //buttonsClicked = true;
+
+    }
+
+    public void jumpUp() {
+
+        jump = true;
+
+    }
+
+
+    // Update is called once per frame
+    void Update() {
+
+
+
+
+
         if (inMenu) {
 
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -83,7 +125,7 @@ public class Fed_Controller : MonoBehaviour {
             myAnim.SetBool("isGrounded", isGrounded);
             myAnim.SetFloat("verticalSpeed", myRb.velocity.y);
 
-            if (((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && isGrounded)) {
+            if (((Input.GetMouseButtonDown(0))  || Input.GetKeyDown(KeyCode.Space)) && isGrounded) {
 
                 myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
                 //JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
@@ -94,14 +136,14 @@ public class Fed_Controller : MonoBehaviour {
 
 
 
-            if (Input.GetKeyDown(KeyCode.A)) {
+            if (Input.GetKeyDown(KeyCode.A) || left) {
                 myRb.velocity = new Vector2(-speed, myRb.velocity.y);
                 if (transform.localScale.x > 0)
                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
             }
             else
-             if (Input.GetKeyDown(KeyCode.D)) {
+             if (Input.GetKeyDown(KeyCode.D) || right) {
                 myRb.velocity = new Vector2(speed, myRb.velocity.y);
                 if (transform.localScale.x < 0)
                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -111,7 +153,7 @@ public class Fed_Controller : MonoBehaviour {
 
 
 
-            if ((((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping))) {
+            if (( Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) {
 
                 if (jumpTimeCounter > 0) {
                     myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
@@ -143,6 +185,10 @@ public class Fed_Controller : MonoBehaviour {
                 levelManager.GetComponent<fedLevelManager>().Died();
                 alreadyDead = false;
             }
+
+            left = false;
+            right = false;
+            jump = false;
         }
 
     }

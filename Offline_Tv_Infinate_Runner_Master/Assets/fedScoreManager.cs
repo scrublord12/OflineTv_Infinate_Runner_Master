@@ -21,14 +21,16 @@ public class fedScoreManager : MonoBehaviour {
     void Start() {
 
         playerStartPoint = player.position;
+        
 
     }
 
     void Update() {
         Debug.Log(playerStartPoint);
         Debug.Log(player.transform.position + " :current");
-        if (player.transform.position.y > playerStartPoint.y && !player.GetComponent<Fed_Controller>().alreadyDead) {
-            scoreIncreasing = true;
+
+        if (player.GetComponent<Fed_Controller>().alreadyDead) {
+            scoreIncreasing = false;
         }
 
         if (scoreIncreasing) {

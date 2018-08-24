@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Fed_Controller : MonoBehaviour {
 
@@ -50,13 +51,15 @@ public class Fed_Controller : MonoBehaviour {
     public Button jumpButton;
     
 
-    bool jump, right, left;
+    public bool jump, right, left;
 
     public Button rightButton;
 
     public Button leftButton;
 
     bool buttonsClicked;
+
+
 
 
     // Use this for initialization
@@ -80,7 +83,8 @@ public class Fed_Controller : MonoBehaviour {
     public void turnRight() {
 
         right = true;
-
+        jump = false;
+        left = false;
         //buttonsClicked = true;
 
     }
@@ -88,7 +92,8 @@ public class Fed_Controller : MonoBehaviour {
     public void turnLeft() {
 
         left = true;
-
+        right = false;
+        jump = false;
         //buttonsClicked = true;
 
     }
@@ -97,15 +102,26 @@ public class Fed_Controller : MonoBehaviour {
 
         jump = true;
 
+        
+
     }
 
+
+    
 
     // Update is called once per frame
     void Update() {
 
 
+        
 
 
+        if (EventSystem.current.IsPointerOverGameObject()) {
+            jump = false;
+        }
+        else {
+            jump = true;
+        }
 
         if (inMenu) {
 
@@ -125,10 +141,13 @@ public class Fed_Controller : MonoBehaviour {
             myAnim.SetBool("isGrounded", isGrounded);
             myAnim.SetFloat("verticalSpeed", myRb.velocity.y);
 
-            if (((Input.GetMouseButtonDown(0))  || Input.GetKeyDown(KeyCode.Space)) && isGrounded) {
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && isGrounded && jump) {
 
                 myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
                 //JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
+                //Debug.Log("hmm");
+                //Debug.Log(Input.mousePosition.x + +Input.mousePosition.y);
+                
 
                 stoppedJumping = false;
             }
@@ -150,9 +169,6 @@ public class Fed_Controller : MonoBehaviour {
 
             }
 
-
-
-
             if (( Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) {
 
                 if (jumpTimeCounter > 0) {
@@ -163,8 +179,10 @@ public class Fed_Controller : MonoBehaviour {
 
             }
 
-            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))) {
-                jumpTimeCounter = 0;
+            
+
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0) )) {
+               // jumpTimeCounter = 0;
                 stoppedJumping = true;
             }
 
@@ -173,7 +191,7 @@ public class Fed_Controller : MonoBehaviour {
                 Debug.Log("hi");
             }
 
-            if (isGrounded) {
+            if (isGrounded && stoppedJumping) {
                 jumpTimeCounter = jumpTime;
             }
 
@@ -183,13 +201,12 @@ public class Fed_Controller : MonoBehaviour {
 
             if (alreadyDead) {
                 levelManager.GetComponent<fedLevelManager>().Died();
-                alreadyDead = false;
+                //alreadyDead = false;
             }
 
-            left = false;
-            right = false;
-            jump = false;
+            
         }
+        
 
     }
 }

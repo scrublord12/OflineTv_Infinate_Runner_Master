@@ -627,7 +627,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -320, y: -150}
-  m_SizeDelta: {x: 31.4, y: 30}
+  m_SizeDelta: {x: 31.399994, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795587420
 MonoBehaviour:
@@ -1488,9 +1488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57fbb620554c7349a3495925b54424c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 14
+  jumpForce: 15
   speed: 6
-  jumpTime: 0.1
+  jumpTime: 0.15
   isGrounded: 0
   notOnMenu: 0
   groundLayer:
@@ -1506,9 +1506,9 @@ MonoBehaviour:
   levelManager: {fileID: 1040322980}
   deathPoint: {fileID: 1527205493}
   inMenu: 0
-  jumpButton: {fileID: 0}
-  rightButton: {fileID: 0}
-  leftButton: {fileID: 0}
+  jumpButton: {fileID: 795587420}
+  rightButton: {fileID: 1653480072}
+  leftButton: {fileID: 795587420}
 --- !u!95 &1251299181
 Animator:
   serializedVersion: 3
@@ -2490,7 +2490,7 @@ MonoBehaviour:
   camMove: 0
   speedMultiplier: 0.012
   milestoneCount: 2
-  score: {fileID: 0}
+  score: {fileID: 1591446239}
 --- !u!1 &2122242136
 GameObject:
   m_ObjectHideFlags: 0

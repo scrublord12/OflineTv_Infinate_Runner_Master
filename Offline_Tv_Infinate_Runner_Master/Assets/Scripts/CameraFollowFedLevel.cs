@@ -39,15 +39,23 @@ public class CameraFollowFedLevel : MonoBehaviour {
 
         }
         
-        if (player.transform.position.y > (lastPlayerPosition.y)) {
+        if ((player.transform.position.y > (lastPlayerPosition.y)) && !player.GetComponent<Fed_Controller>().alreadyDead) {
 
             camMove = true;
+            score.GetComponent<fedScoreManager>().scoreIncreasing = true;
 
+        }
+        else {
+            camMove = false;
+            score.GetComponent<fedScoreManager>().scoreIncreasing = false;
         }
   
 
         if (camMove) {
             transform.position = new Vector3(transform.position.x, (transform.position.y + speedMultiplier) , transform.position.z);
+        }
+        else {
+            transform.position = new Vector3(transform.position.x, (transform.position.y), transform.position.z);
         }
         
 

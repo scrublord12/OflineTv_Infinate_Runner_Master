@@ -104,12 +104,18 @@ public class fedLevelManager : MonoBehaviour {
 
         camera.GetComponent<CameraFollowFedLevel>().speedMultiplier = initialSpeedMultipler;
 
+        score.scoreIncreasing = true;
+
         score.scoreCount = 0;
 
         fed.gameObject.SetActive(true);
 
         fed.alreadyDead = false;
 
+        fed.left = false;
+        fed.right = false;
+        
+        
         
 
         

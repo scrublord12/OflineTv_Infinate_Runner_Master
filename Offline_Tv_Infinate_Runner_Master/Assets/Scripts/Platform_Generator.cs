@@ -40,7 +40,7 @@ public class Platform_Generator : MonoBehaviour {
 	void Update () {
 
         if (transform.position.x < generationPoint.position.x) {
-            int platformSize = Random.Range(1, 9);
+            int platformSize = Random.Range(1, 6);
             float posX = pickX();
             float posY = pickY();
 

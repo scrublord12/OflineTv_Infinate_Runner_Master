@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Music
+  - point
   layers:
   - Default
   - TransparentFX

@@ -155,20 +155,20 @@ public class Fed_Controller : MonoBehaviour {
 
 
 
-            if (Input.GetKeyDown(KeyCode.A) || left) {
+            if ((Input.GetKeyDown(KeyCode.A) || left)) {
                 myRb.velocity = new Vector2(-speed, myRb.velocity.y);
                 if (transform.localScale.x > 0)
                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
             }
             else
-             if (Input.GetKeyDown(KeyCode.D) || right) {
+             if ((Input.GetKeyDown(KeyCode.D) || right) ) {
                 myRb.velocity = new Vector2(speed, myRb.velocity.y);
                 if (transform.localScale.x < 0)
                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
             }
-
+            
             if (( Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping) {
 
                 if (jumpTimeCounter > 0) {
@@ -202,6 +202,7 @@ public class Fed_Controller : MonoBehaviour {
             if (alreadyDead) {
                 levelManager.GetComponent<fedLevelManager>().Died();
                 //alreadyDead = false;
+                Debug.Log("died");
             }
 
             

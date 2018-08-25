@@ -42,7 +42,7 @@ public class Fed_Platform_Generator : MonoBehaviour {
 		
         if(transform.position.y < generationPoint.position.y) {
 
-            int pickPlatform = Random.Range(1, 6);
+            int pickPlatform = Random.Range(1, 7);
             float posX = pickX();
             float posY = pickY();
 
@@ -66,13 +66,14 @@ public class Fed_Platform_Generator : MonoBehaviour {
                 Instantiate(smallPlatform, new Vector3(Random.Range(5, 4), posY, smallPlatform.transform.position.z), transform.rotation);
             }
         }
-        if (pickPlatform == 7) {
+        if (pickPlatform == 8) {
             Instantiate(bigMovingPlatform, new Vector3(posX, posY, bigMovingPlatform.transform.position.z), transform.rotation);
         }
-        if (pickPlatform == 8) {
+        if (pickPlatform == 7) {
             Instantiate(smallMovingPlatform, new Vector3(posX, posY, smallMovingPlatform.transform.position.z), transform.rotation);
         }
 
+        
         lastPlatformX = posX;
         lastPlatformY = posY;
         transform.position = new Vector3(transform.position.x, lastPlatformY, transform.position.z);

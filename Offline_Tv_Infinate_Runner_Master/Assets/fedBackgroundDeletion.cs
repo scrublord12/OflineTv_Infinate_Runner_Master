@@ -16,9 +16,7 @@ public class fedBackgroundDeletion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-        if(transform.position.y < deletePoint.GetComponent<Transform>().position.y) {
-            Destroy(gameObject);
-        }
+        
 
 	}
 }

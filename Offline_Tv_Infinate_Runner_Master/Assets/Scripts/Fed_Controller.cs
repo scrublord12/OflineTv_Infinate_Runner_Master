@@ -75,7 +75,6 @@ public class Fed_Controller : MonoBehaviour {
 
         alreadyDead = false;
 
-
     }
 	
 
@@ -102,21 +101,11 @@ public class Fed_Controller : MonoBehaviour {
 
         jump = true;
 
-        
-
     }
-
-
-    
-
     // Update is called once per frame
     void Update() {
 
-
-        
-
-
-        if (EventSystem.current.IsPointerOverGameObject()) {
+        if (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
             jump = false;
         }
         else {

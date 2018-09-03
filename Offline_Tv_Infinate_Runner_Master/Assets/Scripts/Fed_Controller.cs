@@ -59,6 +59,8 @@ public class Fed_Controller : MonoBehaviour {
 
     bool buttonsClicked;
 
+    public RectTransform[] uiElements;
+
 
 
 
@@ -105,7 +107,10 @@ public class Fed_Controller : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) {
+        Debug.Log(isMouseOverUI() + "llll");
+
+
+        if (EventSystem.current.IsPointerOverGameObject()) {
             jump = false;
         }
         else {
@@ -126,11 +131,9 @@ public class Fed_Controller : MonoBehaviour {
         else {
 
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-            myAnim.SetFloat("speed", Mathf.Abs(myRb.velocity.x));
-            myAnim.SetBool("isGrounded", isGrounded);
-            myAnim.SetFloat("verticalSpeed", myRb.velocity.y);
+            
 
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && isGrounded && jump) {
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && isGrounded && jump && !isMouseOverUI()) {
 
                 myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
                 //JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
@@ -194,9 +197,32 @@ public class Fed_Controller : MonoBehaviour {
                 Debug.Log("died");
             }
 
-            
+            myAnim.SetFloat("speed", Mathf.Abs(myRb.velocity.x));
+            myAnim.SetBool("isGrounded", isGrounded);
+            myAnim.SetFloat("verticalSpeed", myRb.velocity.y);
+
+
         }
         
 
+    }
+    public bool isMouseOverUI() {
+        if(Input.touchCount == 0) {
+            return false;
+        }
+        Vector2 mousePosition = Input.GetTouch(0).position;
+        foreach (RectTransform elem in uiElements) {
+            if (!elem.gameObject.activeSelf) {
+                continue;
+            }
+            Vector3[] worldCorners = new Vector3[4];
+            elem.GetWorldCorners(worldCorners);
+
+            if (mousePosition.x >= worldCorners[0].x && mousePosition.x < worldCorners[2].x
+               && mousePosition.y >= worldCorners[0].y && mousePosition.y < worldCorners[2].y) {
+                return true;
+            }
+        }
+        return false;
     }
 }

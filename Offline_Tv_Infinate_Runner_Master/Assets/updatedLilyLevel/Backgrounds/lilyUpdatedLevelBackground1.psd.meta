@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 4cbb02c4c62a24841bb7b592b97e66b9
+guid: 9552d1ca3b5cbbd43acc68be4d7f73b9
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Fed_BG_0
-    21300002: Fed_BG_1
-    21300004: Fed_BG_2
-    21300006: Fed_BG_3
-    21300008: Fed_BG_4
-    21300010: Fed_BG_5
-    21300012: Fed_BG_6
+    21300000: lilyUpdatedLevelBackground1_0
+    21300002: lilyUpdatedLevelBackground1_1
+    21300004: lilyUpdatedLevelBackground1_2
+    21300006: lilyUpdatedLevelBackground1_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -68,7 +65,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -79,7 +76,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -90,7 +87,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: iPhone
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -101,7 +98,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -112,7 +109,7 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: WebGL
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
     compressionQuality: 50
@@ -124,141 +121,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fed_BG_0
+      name: lilyUpdatedLevelBackground1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 6475
-        width: 1920
-        height: 1080
+        y: 384
+        width: 512
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97a068e1d3ff9e84ea79b1a45fff01f2
+      spriteID: b50589f8d11a3a1458144c969ec61b57
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fed_BG_1
+      name: lilyUpdatedLevelBackground1_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 5403
-        width: 1920
-        height: 1080
+        y: 256
+        width: 512
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01aab1efbb03b86468248fb246ef2833
+      spriteID: ab22aedbff8ea574aa91adc78da1b415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fed_BG_2
+      name: lilyUpdatedLevelBackground1_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 4323
-        width: 1920
-        height: 1080
+        y: 128
+        width: 512
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 654bfbdadbf93474e9303d891580f5a4
+      spriteID: efca240bc1810d347898cbe15617fdf8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fed_BG_3
+      name: lilyUpdatedLevelBackground1_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 3243
-        width: 1920
-        height: 1080
+        y: 0
+        width: 512
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbfe02bcf722b984d8c7aa6398a8acf3
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fed_BG_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2163
-        width: 1920
-        height: 1080
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2bb345ea2a76fba429c2c70cd6c4fa6d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fed_BG_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1083
-        width: 1920
-        height: 1080
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 058b628b698a5d4408e39d1644586650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fed_BG_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 11
-        width: 1920
-        height: 1080
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2fe66fc7f66c9c48bc2c834682ae375
+      spriteID: b4ebd2a74842c9d47bf654a77c565337
       vertices: []
       indices: 
       edges: []
@@ -266,14 +203,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 044cd3e114cbeeb418a6610d620131e1
+    spriteID: 34f466e74bb61ba439d10172c4012b60
     vertices: []
     indices: 
     edges: []
     weights: []
   spritePackingTag: 
-  pSDRemoveMatte: 1
-  pSDShowRemoveMatteOption: 1
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

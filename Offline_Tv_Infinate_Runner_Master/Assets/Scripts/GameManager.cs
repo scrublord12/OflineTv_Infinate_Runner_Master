@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
-
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public Transform platformGenerator;
     Vector3 platformStartPoint;
@@ -25,45 +24,50 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] BackgroundSounds;
 
-    private void Awake() {
+    private void Awake()
+    {
         transition.SetTrigger("Down");
         BackgroundSounds[Random.Range(0, BackgroundSounds.Length)].GetComponent<AudioSource>().Play();
     }
 
-    void Start () {
-
+    void Start()
+    {
         platformStartPoint = platformGenerator.position;
         playerStartPoint = player.transform.position;
 
         initialSpeed = player.speed;
-        initialMilestone= player.speed_Increase_Milestone;
+        initialMilestone = player.speed_Increase_Milestone;
 
-	}
-	
-	void Update () {
+    }
+    void Update()
+    {
+        if (player.alreadyDead)
+        {
+            for (int i = 0; i < BackgroundSounds.Length; i++)
+            {
 
-
-        if (player.alreadyDead) {
-            for (int i = 0; i < BackgroundSounds.Length; i++) {
-
-                if (BackgroundSounds[i].GetComponent<AudioSource>().isPlaying) {
+                if (BackgroundSounds[i].GetComponent<AudioSource>().isPlaying)
+                {
                     BackgroundSounds[i].GetComponent<AudioSource>().Stop();
                 }
             }
         }
 
-
     }
 
-    public void restartGame() {
+    public void restartGame()
+    {
         StartCoroutine("RestartGameCo");
     }
 
-    IEnumerator RestartGameCo(){
+    IEnumerator RestartGameCo()
+    {
         transition.SetTrigger("Full");
-        for(int i = 0; i < BackgroundSounds.Length; i++) {
+        for (int i = 0; i < BackgroundSounds.Length; i++)
+        {
 
-            if (BackgroundSounds[i].GetComponent<AudioSource>().isPlaying) {
+            if (BackgroundSounds[i].GetComponent<AudioSource>().isPlaying)
+            {
                 BackgroundSounds[i].GetComponent<AudioSource>().Stop();
             }
         }
@@ -73,7 +77,8 @@ public class GameManager : MonoBehaviour {
 
         platformList = FindObjectsOfType<PlatformDeletionScript>();
 
-        for(int i = 0; i < platformList.Length; i++) {
+        for (int i = 0; i < platformList.Length; i++)
+        {
 
             Destroy(platformList[i].gameObject);
         }
@@ -96,7 +101,8 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void Died() {
+    public void Died()
+    {
 
         score.scoreIncreasing = false;
         DeathMenu.GetComponent<Animator>().SetBool("Died", true);
@@ -104,13 +110,15 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void Menu() {
+    public void Menu()
+    {
 
         StartCoroutine("menu");
 
     }
 
-    IEnumerator menu() {
+    IEnumerator menu()
+    {
 
         transition.SetTrigger("Up");
         yield return new WaitForSeconds(1f);

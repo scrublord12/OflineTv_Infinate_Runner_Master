@@ -31,10 +31,8 @@ public class Fed_Platform_Generator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         lastPlatformX = lastPlatform.position.x;
         lastPlatformY = lastPlatform.position.y;
-
 	}
 	
 	// Update is called once per frame
@@ -48,8 +46,6 @@ public class Fed_Platform_Generator : MonoBehaviour {
 
             createPlatform(pickPlatform, posX, posY);
         }
-        
-
 	}
 
     void createPlatform(int pickPlatform, float posX, float posY) {
@@ -58,7 +54,6 @@ public class Fed_Platform_Generator : MonoBehaviour {
             Instantiate(bigPlatform, new Vector3(posX, posY, bigPlatform.transform.position.z), transform.rotation);
         }
         if (pickPlatform <= 6 && pickPlatform >= 4) {
-            
             if (lastPlatformX > 0) {
                 Instantiate(smallPlatform, new Vector3(Random.Range(-5, -4), posY, smallPlatform.transform.position.z), transform.rotation);
             }

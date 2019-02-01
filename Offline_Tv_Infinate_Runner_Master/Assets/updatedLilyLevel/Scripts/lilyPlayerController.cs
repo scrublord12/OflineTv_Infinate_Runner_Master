@@ -6,61 +6,36 @@ public class lilyPlayerController : MonoBehaviour {
 
     public float jump_Force;
     public float speed;
-
     public float speed_Multiplier;
-
     public float speed_Increase_Milestone;
-
     float speed_Milestone_Count;
-
     public float jump_Time;
     float jump_Time_Counter;
-
     public bool isGrounded;
-
     public bool notOnMenu;
-
     public LayerMask groundLayer;
-
     Animator myAnim;
-
     Collider2D myCollider;
-
     Rigidbody2D rb;
-
     public Transform dogModeStart;
     public Transform dogModeEnd;
     public Transform beeModeStart;
     public Transform beeModeEnd;
-
     public Transform groundCheck;
     public float groundCheckRadius;
-
     public GameManager gm;
-
     public bool obstacleHit;
-
     bool stoppedJumping;
-
     public bool alreadyDead;
-
     public GameObject[] MicHitSounds;
-
     public GameObject[] FallSounds;
-
     public GameObject[] JumpSounds;
-
     bool alreadyDeadObstacle;
-
     public bool dogMode;
-
     public bool beeMode;
-
     public float dogModeSpeed, dogModeJumpForce;
     public float beeModeSpeed, beeModeJumpForce;
-
     public float normalSpeed, normalJumpForce;
-
     void Start() {
 
         rb = GetComponent<Rigidbody2D>();
@@ -70,10 +45,7 @@ public class lilyPlayerController : MonoBehaviour {
         jump_Time_Counter = jump_Time;
 
         stoppedJumping = true;
-
         alreadyDead = false;
-
-  
 
     }
 
@@ -97,9 +69,7 @@ public class lilyPlayerController : MonoBehaviour {
             if (jump_Time_Counter > 0) {
                 rb.velocity = new Vector2(rb.velocity.x, jump_Force);
                 jump_Time_Counter -= Time.deltaTime;
- 
             }
-
         }
 
         if ((Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) && speed > 0) {
@@ -112,7 +82,6 @@ public class lilyPlayerController : MonoBehaviour {
         }
          speed = normalSpeed;
          jump_Force = normalJumpForce;
-           
         
         if(dogMode == true){
 

@@ -10772,7 +10772,7 @@ MonoBehaviour:
   MicHitSounds: []
   FallSounds: []
   JumpSounds: []
-  dogMode: 0
+  dogMode: 1
   beeMode: 0
   dogModeSpeed: 10
   dogModeJumpForce: 30
